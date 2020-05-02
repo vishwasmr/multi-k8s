@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+   name: vishwasmr-k8s-xyz-tls
+spec:
+   secretName: vishwasmr-k8s-xyz
+   issuerRef:
+      name: letsencrypt-prod
+      kind: ClusterIssuer
+   commonName: vishwasmr-k8s.xyz
+   dnsNames:
+      - vishwasmr-k8s.xyz
+      - www.vishwasmr-k8s.xyz
+   acme:
+      config:
+        - http01:
+            ingressClass: nginx
+          domains:
+            - vishwasmr-k8s.xyz
+            - www.vishwasmr-k8s.xyz
